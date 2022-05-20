@@ -73,7 +73,7 @@ router.post('/forgotPassword', (req, res) => {
     connection.query(query, [user.email], (err, results) => {
         if (!err) {
             if (results.length <= 0) {
-                return res.status(200).json({ message: "Redefinição de senha enviada com sucesso para o seu email." });
+                return res.status(200).json;
             }
             else {
                 var mailOptions = {
@@ -90,12 +90,49 @@ router.post('/forgotPassword', (req, res) => {
                         console.log('Email sent: ' + info.response);
                     }
                 });
+                return res.status(200).json({ message: "Redefinição de senha enviada com sucesso para o seu email." });
             }
         }
         else {
             return res.status(500).json(err)
         }
     })
+})
+
+router.get('/get', (req, res) => {
+    var query = "select id,name,email,contactNumber,status,role from user"
+    connection.query(query, (err, results) => {
+        if (!err) {
+            return res.status(200).json(results);
+        }
+        else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+router.patch('/update', (req, res) => {
+    let user = req.body
+    var query = "update user set status=? where id=?";
+    connection.query(query, [user.status, user.id], (err, results) => {
+        if (!err) {
+            if (results.effectedRows == 0) {
+                return res.status(404).json({ message: "Usuário não existe" });
+            }
+            return res.status(200).json({ message: "Usuário atualizado com sucesso" });
+        }
+        else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+router.get('/checkToken', (req, res) => {
+    return res.status(200).json({ message: "true" });
+})
+
+router.post('/changePassword', (req, res) => {
+    //const
 })
 
 module.exports = router;
