@@ -13,6 +13,16 @@ insert into user(name,contactNumber,email,password,status,role) values ('admin',
 
 create table category(
     id int NOT NULL AUTO_INCREMENT,
-    name varchar(3) NOT NULL,
+    name varchar(10) NOT NULL,
     primary key (id)
+);
+
+create table client(
+    id int NOT NULL AUTO_INCREMENT,
+    name varchar(50) NOT NULL,
+    company varchar(50),
+    contactNumber varchar(20),
+    email varchar (50),
+    categoryId integer NOT NULL,
+    primary key(id)
 );
