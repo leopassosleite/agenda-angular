@@ -6,8 +6,8 @@ var checkRole = require('../services/checkRole');
 
 router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res, next) => {
     let client = req.body;
-    query = "insert into client (name,company,contactNumber,email,deadlineId,productId) values(?,?,?,?,?,?)";
-    connection.query(query, [client.name, client.company, client.contactNumber, client.email, client.deadlineId, client.productId], (err, results) => {
+    query = "insert into client (name,company,contactNumber,email,city,description,deadlineId,productId,statusId) values(?,?,?,?,?,?,?,?)";
+    connection.query(query, [client.name, client.company, client.contactNumber, client.email, client.city, client.description, client.deadlineId, client.productId, client.statusId], (err, results) => {
         if (!err) {
             return res.status(200).json({ message: "Cliente inserido com sucesso" });
         }
@@ -19,7 +19,7 @@ router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res, next
 
 //cl = client, d = deadline, p = product
 router.get('/get', auth.authenticateToken, (req, res, next) => {
-    var query = "select cl.id,cl.name,cl.company,cl.contactNumber,cl.email,d.id as deadlineId,d.name as deadlineName,s.id as statusId,s.name as statusName,p.id as productId,p.name as productName from client as cl INNER JOIN deadline as d, status as s, product as p where cl.deadlineId = d.id and cl.statusId = s.id and cl.productId = p.id";
+    var query = "select cl.id,cl.name,cl.company,cl.contactNumber,cl.email,cl.city,cl.description,d.id as deadlineId,d.name as deadlineName,s.id as statusId,s.name as statusName,p.id as productId,p.name as productName from client as cl INNER JOIN deadline as d, status as s, product as p where cl.deadlineId = d.id and cl.statusId = s.id and cl.productId = p.id";
     connection.query(query, (err, results) => {
         if (!err) {
             return res.status(200).json(results)
@@ -71,7 +71,7 @@ router.get('/getById/:id', auth.authenticateToken, (req, res, next) => {
 
 router.patch('/update', auth.authenticateToken, checkRole.checkRole, (req, res, next) => {
     let client = req.body;
-    var query = "update client set name=?,company=?,contactNumber=?,email=?,deadlineId=?,statusId=?,productId=? where id=?";
+    var query = "update client set name=?,company=?,contactNumber=?,email=?,city-?,description=?,deadlineId=?,productId=?,statusId=? where id=?";
     connection.query(query, [client.name, client.company, client.contactNumber, client.email, client.deadlineId, client.statusId, client.productId, client.id], (err, results) => {
         if (!err) {
             if (results.affectedRows == 0) {
