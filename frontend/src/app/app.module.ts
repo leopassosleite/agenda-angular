@@ -14,9 +14,11 @@ import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SignupComponent } from './LoginPage/signup/signup.component';
+import { ForgotPasswordComponent } from './LoginPage/forgot-password/forgot-password.component';
+import { LoginComponent } from './LoginPage/login/login.component';
+
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -36,6 +38,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AppSidebarComponent,
     SignupComponent,
     ForgotPasswordComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
