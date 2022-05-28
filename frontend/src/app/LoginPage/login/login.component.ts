@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private snackbarService: SnackbarService,
     private dialogRef: MatDialogRef<LoginComponent>,
-    private ngxService: NgxUiLoaderService) { }
+    private ngxService: NgxUiLoaderService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuider.group({
@@ -52,5 +54,11 @@ export class LoginComponent implements OnInit {
       }
       this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error)
     })
+  }
+  
+  forgotPasswordAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialog.open(ForgotPasswordComponent, dialogConfig);
   }
 }

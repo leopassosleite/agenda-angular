@@ -1,4 +1,4 @@
-<mat-toolbar class="style">
+<mat-toolbar color="primary">
     <mat-toolbar-row fxLayout="row">
         <span class="title-center">Login</span>
     </mat-toolbar-row>
@@ -22,6 +22,9 @@
                     <span *ngIf="loginForm.controls.password.errors.pattern">Este campo é inválido</span>
                 </mat-error>
             </mat-form-field>
+            <ul>
+                <li><a (click)="forgotPasswordAction()">Esqueci minha senha</a></li>
+            </ul>
         </div>
     </form>
 </mat-dialog-content>

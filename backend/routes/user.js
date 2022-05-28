@@ -43,7 +43,7 @@ router.post('/login', (req, res) => {
                 return res.status(401).json({ message: "Nome de usuário ou senha incorreta" });
             }
             else if (results[0].status === 'false') {
-                return res.status(401).json({ message: "Espere a aprovação do Admin" });
+                return res.status(401).json({ message: "Esperando pela a aprovação do Admin so sistema" });
             }
             else if (results[0].password == user.password) {
                 const response = { email: results[0].email, role: results[0].role }
@@ -82,7 +82,7 @@ router.post('/forgotPassword', (req, res) => {
                     from: process.env.EMAIL,
                     to: results[0].email,
                     subject: 'Solicitação de troca de senha',
-                    html: '<p><b>Detalhes do seu login em XBAgenda</b><br><b>Email: </b>' + results[0].email + '<br><b>Para redefinir sua senha clique no link abaixo.</b>' + '<br><a href="http://localhost:4200/">Redefinir senha</a><br><b> Caso a solitação de troca de senha não tenha sido feita por você, entre em contato pelo número (51) 99154-6743.</b></p>'
+                    html: '<p><b>Detalhes do seu login em XBAgenda</b><br><b>Email: </b>' + results[0].email + '<br><b>Para redefinir sua senha clique no link abaixo.</b>' + '<br><a href="http://localhost:4200/agenda/dashboard">Redefinir senha</a><br><b> Caso a solitação de troca de senha não tenha sido feita por você, entre em contato pelo número (51) 99154-6743.</b></p>'
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
