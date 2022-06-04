@@ -1,23 +1,21 @@
 create table user(
     id int primary key AUTO_INCREMENT,
     name varchar(250) NOT NULL,
-    contactNumber varchar(20) NOT NULL,
     email varchar(50) NOT NULL,
+    contact_number varchar(20),
     password varchar(250) NOT NULL,
     status varchar(250) NOT NULL,
     role varchar(20) NOT NULL,
     UNIQUE(email)
 );
 
-insert into user(name,contactNumber,email,password,status,role) values ('admin','(51) 99154-6743','leopassos.leite@gmail.com','admin','true','admin');
+insert into user(name,contact_number,email,password,status,role) values ('admin','(51) 99154-6743','filipe.ath@gmail.com','admin','true','admin');
 
 create table deadline(
     id int NOT NULL AUTO_INCREMENT,
     name varchar(10) NOT NULL,
     primary key (id)
 );
-insert into status(name) values ('contatado');
-insert into status(name) values ('pendente');
 
 create table category(
     id int NOT NULL AUTO_INCREMENT,
@@ -34,6 +32,8 @@ create table status(
     name varchar(10) NOT NULL,
     primary key(id)
 );
+insert into status(name) values ('a contatar');
+insert into status(name) values ('contatado');
 
 create table statusProduct(
     id int NOT NULL AUTO_INCREMENT,
@@ -64,9 +64,11 @@ create table client(
     contactNumber varchar(20) NOT NULL,
     email varchar (50) NOT NULL,
     city varchar (50) NOT NULL,
-    description varchar (255) NOT NULL,
+    description varchar (255),
     deadlineId integer NOT NULL,
     productId integer NOT NULL,
+    moment varchar (50) NOT NULL,
+    status varchar(20),
     primary key(id)
 );
 

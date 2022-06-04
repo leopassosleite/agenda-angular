@@ -5,44 +5,44 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ProductService {
   url = environment.apiUrl
 
   constructor(private httpClient: HttpClient) { }
 
   add(data: any) {
-    return this.httpClient.post(this.url + "client/add/", data, {
+    return this.httpClient.post(this.url + "product/add/", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
   update(data: any) {
-    return this.httpClient.patch(this.url + "client/update/", data, {
+    return this.httpClient.patch(this.url + "product/update/", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
   updateStatus(data: any) {
-    return this.httpClient.patch(this.url + "client/updateStatus/", data, {
+    return this.httpClient.patch(this.url + "product/updateStatus/", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
-  getClients() {
-    return this.httpClient.get(this.url + "client/get/");
+  getProducts() {
+    return this.httpClient.get(this.url + "product/get/");
   }
 
   delete(id: any) {
-    return this.httpClient.delete(this.url + "client/delete/" + id, {
+    return this.httpClient.delete(this.url + "product/delete/" + id, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
-  getClientByDeadline(id: any) {
-    return this.httpClient.get(this.url + "client/getBydeadline/" + id);
+  getProductsByCategory(id: any) {
+    return this.httpClient.get(this.url + "product/getByCategory/" + id);
   }
 
   getById(id: any) {
-    return this.httpClient.get(this.url + "client/getById/" + id);
+    return this.httpClient.get(this.url + "product/getById/" + id);
   }
 }

@@ -12,6 +12,12 @@ import { MaterialModule } from '../shared/material-module';
 import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill-products.component';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { ManageClientComponent } from './manage-client/manage-client.component';
+import { ClientComponent } from './dialog/client/client.component';
+import { ManageProductComponent } from './manage-product/manage-product.component';
+import { ProductComponent } from './dialog/product/product.component';
+import { ManageOrderComponent } from './manage-order/manage-order.component';
+import { ManagerCalendarComponent } from './manager-calendar/manager-calendar.component';
 
 @NgModule({
   imports: [
@@ -28,7 +34,13 @@ import { ChangePasswordComponent } from './dialog/change-password/change-passwor
   declarations: [
     ViewBillProductsComponent,
     ConfirmationComponent,
-    ChangePasswordComponent    
+    ChangePasswordComponent,
+    ManageClientComponent,
+    ClientComponent,
+    ManageProductComponent,
+    ProductComponent,
+    ManageOrderComponent,
+    ManagerCalendarComponent    
   ]
 })
 export class MaterialComponentsModule {}

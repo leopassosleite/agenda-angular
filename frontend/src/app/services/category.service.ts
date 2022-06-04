@@ -5,12 +5,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
-  url = environment.apiUrl;
+export class CategoryService {
+  url = environment.apiUrl
 
   constructor(private httpClient: HttpClient) { }
 
-  getDetails(){
-    return this.httpClient.get(this.url + "dashboard/details");
+  getCategorys() {
+    return this.httpClient.get(this.url + "category/get/");
   }
 }

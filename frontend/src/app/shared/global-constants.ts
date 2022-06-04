@@ -1,7 +1,9 @@
 export class GlobalConstants {
     //Menssagem
     public static genericError: string = "Algo inesperado aconteceu. Por favor tente mais tarde";
-    public static unauthorized: string = "Você não tem autorização para acessar essa página"
+    public static unauthorized: string = "Você não tem autorização para acessar essa página";
+    public static productExistError: string = "O produto não existe";
+    public static productAdded: string = "O produto foi adicionado com sucesso";
 
     //Regex
     public static nameRegex: string = "[a-zA-Z0-9 ]*";
